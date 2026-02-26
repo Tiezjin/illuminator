@@ -1,7 +1,7 @@
 
 # Illuminator
 
-> [🇺🇸 English](#-english) | [🇨🇳 简体中文](#-简体中文) | [🇩🇪 Deutsch](#-deutsch)
+> **Language** [🇺🇸 English](#-english) | [🇨🇳 简体中文](#-简体中文) | [🇩🇪 Deutsch](#-deutsch)
 
 ---
 
