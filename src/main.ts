@@ -163,36 +163,30 @@ export default class Illuminator extends Plugin {
         });
     }
 
-   async saveAndInsert(blob: Blob, ext: string, editor: Editor, originalName: string, isPaste: boolean = false) {
+async saveAndInsert(blob: Blob, ext: string, editor: Editor, originalName: string, isPaste: boolean = false) {
     try {
         let baseName: string;
-
         if (isPaste) {
-            // Logic for Paste: use a clean Timestamp
             baseName = "IMG_" + moment().format("YYYYMMDDHHmmss");
         } else {
-            // Preserve the original filename, just strip the extension
             const lastDotIndex = originalName.lastIndexOf(".");
-            baseName = lastDotIndex !== -1 
-                ? originalName.substring(0, lastDotIndex) 
-                : originalName;
+            baseName = lastDotIndex !== -1 ? originalName.substring(0, lastDotIndex) : originalName;
         }
 
-        const name = `${baseName}.${ext}`; 
-        
-        // --- Folder and Path Logic  ---
-        // @ts-ignore
-        const attachmentFolder = this.app.vault.getConfig("attachmentFolderPath") || "";
-        let uniquePath = name;
-        if (attachmentFolder && attachmentFolder !== "/") {
-            const folder = this.app.vault.getAbstractFileByPath(attachmentFolder);
-            if (folder) uniquePath = getUniquePath(attachmentFolder, baseName, ext, this.app.vault);
-        }        
+        const fileName = `${baseName}.${ext}`;
+        const activeFile = this.app.workspace.getActiveFile();
+
+        // ✅ THE "OFFICIAL" WAY: 
+        // This automatically checks the user's settings and provides the full unique path
+        const uniquePath = await this.app.fileManager.getAvailablePathForAttachment(
+            fileName, 
+            activeFile ? activeFile.path : ""
+        );
 
         const buffer = await blob.arrayBuffer();
         const newFile = await this.app.vault.createBinary(uniquePath, buffer);
         
-        const activeFile = this.app.workspace.getActiveFile();
+        // Generate the link correctly based on the new file's location
         let link = this.app.fileManager.generateMarkdownLink(newFile, activeFile ? activeFile.path : "");
         if (!link.startsWith("!")) link = "!" + link;
 
@@ -202,7 +196,7 @@ export default class Illuminator extends Plugin {
         console.error("Illuminator Save Error:", err);
         new Notice(t.ERROR_SAVE + originalName);
     }
-    }
+}
 
     // The Batch Report (The only UI feedback)
     logBatchReport(count: number) {

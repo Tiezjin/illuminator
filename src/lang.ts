@@ -16,7 +16,7 @@ const TRANSLATIONS = {
         PROCESSED: "images processed",
         ILLUMINATE_ACTION: "Illuminate Image",
         ERROR_SAVE: "Error saving image: ",
-        ERROR_UPDATELINS: "Automatic link update failed, check your links manually.",   
+        ERROR_UPDATELINS: "Automatic link update failed, check your links manually.",
         ERROR_PROCESS: "Error processing image: ",
         ILLUMINATE_COMMAND: "Illuminate images?",
         WARNING: "Images will be overwritten! To keep the originals, enable 'Backup Original File' in settings.",
@@ -43,7 +43,7 @@ const TRANSLATIONS = {
         WARNING: "Bilder werden überschrieben! Um die Originaldateien zu behalten, aktivieren Sie 'Originaldatei sichern' in den Einstellungen.",
         CONFIRM: "Bestätigen",
         CANCEL: "Abbrechen"
-        
+
     },
     zh: {
         ILLUMINATOR_SETTINGS: "Illuminator 设置",
@@ -64,7 +64,7 @@ const TRANSLATIONS = {
         ILLUMINATE_COMMAND: "处理图像？",
         WARNING: "图片将被覆盖！要保留原始文件，请在设置中启用“备份原始文件”。",
         CONFIRM: "确认",
-        CANCEL: "取消"        
+        CANCEL: "取消"
 
     }
 };
