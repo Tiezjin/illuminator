@@ -34,7 +34,11 @@ export default class Illuminator extends Plugin {
                     evt.preventDefault();
                     
                     // Trigger the async processing without blocking the event loop
-                    this.handlePaste(imageFiles, editor);
+                    // this.handlePaste(imageFiles, editor);
+                    void this.handlePaste(imageFiles, editor).catch(err => {
+                        console.error("Illuminator: Failed to process pasted images", err);
+                        new Notice(t.ERROR_PROCESS_PASTE);
+                    });
                 }
             })
         );
@@ -176,7 +180,7 @@ async saveAndInsert(blob: Blob, ext: string, editor: Editor, originalName: strin
         const fileName = `${baseName}.${ext}`;
         const activeFile = this.app.workspace.getActiveFile();
 
-        // ✅ THE "OFFICIAL" WAY: 
+        
         // This automatically checks the user's settings and provides the full unique path
         const uniquePath = await this.app.fileManager.getAvailablePathForAttachment(
             fileName, 

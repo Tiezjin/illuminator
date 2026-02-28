@@ -21,7 +21,8 @@ const TRANSLATIONS = {
         ILLUMINATE_COMMAND: "Illuminate images?",
         WARNING: "Images will be overwritten! To keep the originals, enable 'Backup Original File' in settings.",
         CONFIRM: "Confirm",
-        CANCEL: "Cancel"
+        CANCEL: "Cancel",
+        ERROR_PROCESS_PASTE: "Error processing pasted image."
     },
     de: {
         ILLUMINATOR_SETTINGS: "Illuminator-Einstellungen",
@@ -42,8 +43,8 @@ const TRANSLATIONS = {
         ILLUMINATE_COMMAND: "Bilder illuminieren?",
         WARNING: "Bilder werden überschrieben! Um die Originaldateien zu behalten, aktivieren Sie 'Originaldatei sichern' in den Einstellungen.",
         CONFIRM: "Bestätigen",
-        CANCEL: "Abbrechen"
-
+        CANCEL: "Abbrechen",
+        ERROR_PROCESS_PASTE: "Fehler beim Verarbeiten des eingefügten Bildes."
     },
     zh: {
         ILLUMINATOR_SETTINGS: "Illuminator 设置",
@@ -64,7 +65,8 @@ const TRANSLATIONS = {
         ILLUMINATE_COMMAND: "处理图像？",
         WARNING: "图片将被覆盖！要保留原始文件，请在设置中启用“备份原始文件”。",
         CONFIRM: "确认",
-        CANCEL: "取消"
+        CANCEL: "取消",
+        ERROR_PROCESS_PASTE: "处理粘贴的图片时出错。"
 
     }
 };
