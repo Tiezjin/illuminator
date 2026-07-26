@@ -1,7 +1,7 @@
 // Entry point
 
 
-import { Plugin, TFile, Editor, Menu, Notice, normalizePath, Modal, ButtonComponent, TextComponent, App, TAbstractFile, Vault } from 'obsidian';
+import { Plugin, TFile, Editor, Menu, Notice, normalizePath, Modal, ButtonComponent, TextComponent, App, TAbstractFile, Vault, EditorPosition } from 'obsidian';
 import { workerCode } from './engine';
 import { IlluminatorSettings, Default_Settings, IlluminatorSettingTab } from './settings';
 import { t } from './lang';
@@ -92,10 +92,12 @@ export default class Illuminator extends Plugin {
 
     // helper to manage the async loop for pasting
     async handlePaste(files: File[], editor: Editor) {
+        const cursor = editor.getCursor();
+
         for (const file of files) {
             const result = await this.processInWorker(file);
             if (result) {
-                await this.saveAndInsert(result.blob, result.ext, editor, file.name, true);
+                await this.saveAndInsert(result.blob, result.ext, editor, file.name, true, cursor);
             }
         }
     }
@@ -176,7 +178,13 @@ export default class Illuminator extends Plugin {
         });
     }
 
-    async saveAndInsert(blob: Blob, ext: string, editor: Editor, originalName: string, isPaste: boolean = false) {
+    async saveAndInsert(
+        blob: Blob,
+        ext: string,
+        editor: Editor,
+        originalName: string,
+        isPaste: boolean = false,
+        cursor?: EditorPosition | { line: number; ch: number }) {
         try {
             let baseName: string;
 
@@ -195,6 +203,11 @@ export default class Illuminator extends Plugin {
                             defaultName
                         ).open();
                     });
+
+                    if (cursor) {
+                        editor.focus();
+                        editor.setCursor(cursor);
+                    }
                 }
 
                 // Use user-provided name if valid, otherwise use timestamp
@@ -225,7 +238,13 @@ export default class Illuminator extends Plugin {
             let link = this.app.fileManager.generateMarkdownLink(newFile, activeFile ? activeFile.path : "");
             if (!link.startsWith("!")) link = "!" + link;
 
-            editor.replaceSelection(link);
+            if (cursor) {
+                editor.replaceRange(link, cursor);
+                // Optionally move the cursor right after the inserted link
+                editor.setCursor({ line: cursor.line, ch: cursor.ch + link.length });
+            } else {
+                editor.replaceSelection(link);
+            }
         } catch (err) {
             console.error("Illuminator Save Error:", err);
             new Notice(t.ERROR_SAVE + originalName);

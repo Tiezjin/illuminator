@@ -99,7 +99,7 @@ Beide Modi unterstützen:
 
 ## Changelog
 
-### v1.0.1 → v1.0.2
+### 1.0.1 → 1.1.2
 
 **ENG** Custom naming when pasting — set a pattern or name each image individually.
 
