@@ -30,7 +30,7 @@ export class IlluminatorSettingTab extends PluginSettingTab {
         this.plugin = plugin;
     }
 
-    // Modern declarative pattern (runs automatically on Obsidian 1.13.0+)
+    // Modern declarative pattern 
     getSettingDefinitions() {
         return [
             {
@@ -105,7 +105,9 @@ export class IlluminatorSettingTab extends PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
 
-        containerEl.createEl('h2', { text: t.ILLUMINATOR_SETTINGS });
+        new Setting(containerEl)
+            .setName(t.ILLUMINATOR_SETTINGS)
+            .setHeading();
 
         new Setting(containerEl)
             .setName(t.AUTO_ILLUMINATE)
@@ -192,5 +194,6 @@ export class IlluminatorSettingTab extends PluginSettingTab {
                     await this.plugin.saveData(this.plugin.settings);
                 })
             );
+
     }
 }

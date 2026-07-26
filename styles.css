@@ -1,0 +1,28 @@
+
+.setting-item-control input.illuminator-dim-input {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--input-radius);
+    padding: 4px 8px;
+    width: 100%;
+    box-sizing: border-box;
+    
+    /* Optional: Add a subtle background anyway */
+    background-color: var(--background-primary-alt);
+}
+
+/* For the modal input */
+.illuminator-modal-container input.illuminator-modal-input {
+    background-color: var(--background-modifier-form-field);
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+}
+
+/* Ensure the container works */
+.illuminator-modal-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    width: 100%;
+}
