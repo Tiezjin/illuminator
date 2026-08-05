@@ -1,6 +1,6 @@
 # Illuminator
 
-> **Language** [English](#english) | [简体中文](#user-content-简体中文) | [Deutsch](#deutsch)
+> [English](#english) | [简体中文](#user-content-简体中文) | [Deutsch](#deutsch)
 
 [📝 Changelog](#changelog) / 更新日志
 
@@ -19,7 +19,7 @@
 Two ways to use this plugin:
 
 - **Auto Mode (Paste):** Images are automatically processed when pasted into notes.
-- **Manual Mode (Right-Click):** Right-click any image in the file panel and select "Illuminator."
+- **Manual Mode (Right-Click):** Right-click any image in the file panel and select "illuminate."
 
 Both modes support:
 - Adjustable white removal threshold
@@ -48,7 +48,7 @@ Both modes support:
 两种使用方式：
 
 - **自动模式（粘贴）：** 粘贴图片时自动处理。
-- **手动模式（右键）：** 在文件面板中右键图片，选择 "Illuminator"。
+- **手动模式（右键）：** 在文件面板中右键图片，选择 "illuminate"。
 
 两种模式均支持：
 - 可调节的白色去除阈值
@@ -77,7 +77,7 @@ Both modes support:
 Zwei Nutzungsmöglichkeiten:
 
 - **Auto-Modus (Einfügen):** Bilder werden beim Einfügen automatisch verarbeitet.
-- **Manueller Modus (Rechtsklick):** Rechtsklick auf ein Bild im Datei-Panel und „Illuminator“ wählen.
+- **Manueller Modus (Rechtsklick):** Rechtsklick auf ein Bild im Datei-Panel und „illuminate“ wählen.
 
 Beide Modi unterstützen:
 - Einstellbaren Schwellenwert für die Weißentfernung
